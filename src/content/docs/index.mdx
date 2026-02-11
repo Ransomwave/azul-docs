@@ -1,40 +1,54 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
+title: Azul
+description: Easy but powerful Studio-first two-way sync tool.
 template: splash # Remove or comment out this line to display the site sidebar on this page.
 hero:
-  tagline: Congrats on setting up a new Starlight project!
+  tagline: Easy but powerful Studio-first two-way sync tool.
   image:
-    file: ../../assets/houston.webp
+    file: ../../assets/logo.png
   actions:
-    - text: Example Guide
+    - text: Get Started
       link: /guides/example/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
+    - text: View on GitHub
+      link: https://github.com/ransomwave/azul
       icon: external
       variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid } from "@astrojs/starlight/components";
 
-## Next steps
+## Why Azul?
+
+Because Azul takes no time to set up, it's compatible with any project & it works with existing tools.
+
+## Features
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
+  <Card title="Bi-directional Sync" icon="pencil">
+    Changes in Studio update files, and file edits update Studio.
+  </Card>
+  <Card title="Build & Push local files" icon="document">
+    Azul also allows you to build from local files, as well as selectively
+    pushing files to Studio.
+  </Card>
+  <Card title="Rojo Backwards Compatibility" icon="add-document">
+    Azul features a Rojo compatibility mode, allowing you to use Azul with many
+    existing open-source projects.
+  </Card>
+  <Card title="No Configuration Required" icon="setting">
+    Azul works directly out-of-the-box without needing prior project
+    configuration. Get started right away with any project, new or old!
+  </Card>
+  <Card title="Read the docs" icon="open-book">
+    Sounding interesting? Check out the docs to learn more about how Azul works
+    and how to use it!
+  </Card>
 </CardGrid>
+
+### Key Differences from Rojo
+
+- **Two-Way Sync**: Script changes in either Roblox Studio or your local files are reflected in the other.
+- **Workflow**: The instance hierarchy is defined in Roblox Studio. You organize your scripts and assets directly in Studio, and Azul will sync them to your local filesystem.
+- **Project Configuration**: Azul works directly out-of-the-box without needing a project configuration file, but can be customized in-Studio using [Per-place Daemon Settings](https://github.com/Ransomwave/azul/wiki/Advanced-Azul-usage#per-place-daemon-configuration).
+- **Conventions**: Azul keeps [mostly similar conventions](https://github.com/Ransomwave/azul/wiki/Sync-details#script-types) to Rojo, but with some differences. For example, Azul deals away with the `.init.lua` paradigm and instead uses folder structures that directly map to Roblox instances.

@@ -1,0 +1,45 @@
+---
+title: Project Setup
+description: Get started with Azul in minutes.
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Learn how Azul structures your project & how to manage it.
+
+## Creating a New Project
+
+The concept of a "project" is a bit symbolic in Azul. Since the source of truth is Studio, your project is essentially any place in Studio where you want to sync files from/to. Azul-specific settings also live within each Studio place.
+
+To start a new sync session with Azul:
+
+1. Open Roblox Studio and create a new place or open an existing one.
+2. Open an empty folder on your local filesystem.
+3. With the terminal in the local folder, run
+   ```
+   azul
+   ```
+4. In Roblox Studio, click on the "Connect" button.
+
+This will start a new sync session between the Studio place and your local folder. Try creating, renaming, or removing a Script from the Explorer, and see it reflected in your local folder!
+
+<Aside type="note">
+  Azul is designed to work in a Studio-first workflow. Creating new local files
+  while a sync session is active will not translate into a new Instance in
+  Studio. Instead, create new Instances in Studio (or, if in VSCode, use a tool
+  like [Verde](https://github.com/dvitash/verde)).
+</Aside>
+
+## Building from an Existing Project
+
+Many times, you may have an existing Azul project stored locally (for example, in version control) that you want to push into Studio.
+
+To build an existing Azul project into Studio:
+
+1. Open the folder containing your existing Azul project
+2. With your terminal open in that folder, run
+   ```
+   azul build
+   ```
+3. Open Roblox Studio and the place you want to sync with.
+4. Click on the "Connect" button in the Azul plugin.
