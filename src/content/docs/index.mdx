@@ -1,54 +1,63 @@
 ---
-title: Azul
-description: Easy but powerful Studio-first two-way sync tool.
+title: Home
+description: Studio-first two-way sync for Roblox projects.
 template: splash # Remove or comment out this line to display the site sidebar on this page.
 hero:
-  tagline: Easy but powerful Studio-first two-way sync tool.
+  tagline: Keep Studio and your local files in sync, without changing how you build in Studio.
   image:
     file: ../../assets/logo.png
   actions:
     - text: Get Started
-      link: /guides/example/
+      link: /getting-started/installation/
       icon: right-arrow
+    - text: Learn Commands
+      link: /commands/
     - text: View on GitHub
-      link: https://github.com/ransomwave/azul
+      link: https://github.com/Ransomwave/azul
       icon: external
       variant: minimal
 ---
 
 import { Card, CardGrid } from "@astrojs/starlight/components";
 
-## Why Azul?
+## What Azul is
 
-Because Azul takes no time to set up, it's compatible with any project & it works with existing tools.
+Azul is a Studio-first sync tool for Roblox projects. The Studio DataModel is the source of truth, and Azul mirrors that structure to your local filesystem so you can use editor tooling like linting, search, and refactoring.
 
-## Features
+If you already have local files, Azul can also push them back to Studio with `azul build` and `azul push`.
+
+## Key features
 
 <CardGrid stagger>
   <Card title="Bi-directional Sync" icon="pencil">
-    Changes in Studio update files, and file edits update Studio.
+    Edit scripts in Studio or your editor and keep both sides updated.
+  </Card>
+  <Card title="Works with existing places" icon="approve-check">
+    No required project schema. Start from a new place or an old one.
   </Card>
   <Card title="Build & Push local files" icon="document">
-    Azul also allows you to build from local files, as well as selectively
-    pushing files to Studio.
+    Use `build` for full pushes or `push` for targeted updates.
   </Card>
-  <Card title="Rojo Backwards Compatibility" icon="add-document">
-    Azul features a Rojo compatibility mode, allowing you to use Azul with many
-    existing open-source projects.
+  <Card title="Rojo compatibility" icon="add-document">
+    Import from existing Rojo-style projects with `--rojo` when needed.
   </Card>
-  <Card title="No Configuration Required" icon="setting">
-    Azul works directly out-of-the-box without needing prior project
-    configuration. Get started right away with any project, new or old!
-  </Card>
-  <Card title="Read the docs" icon="open-book">
-    Sounding interesting? Check out the docs to learn more about how Azul works
-    and how to use it!
+  <Card title="Sourcemap support" icon="open-book">
+    Generate a Rojo-compatible `sourcemap.json` for tools like Luau LSP.
   </Card>
 </CardGrid>
 
-### Key Differences from Rojo
+## Quick start
 
-- **Two-Way Sync**: Script changes in either Roblox Studio or your local files are reflected in the other.
-- **Workflow**: The instance hierarchy is defined in Roblox Studio. You organize your scripts and assets directly in Studio, and Azul will sync them to your local filesystem.
-- **Project Configuration**: Azul works directly out-of-the-box without needing a project configuration file, but can be customized in-Studio using [Per-place Daemon Settings](https://github.com/Ransomwave/azul/wiki/Advanced-Azul-usage#per-place-daemon-configuration).
-- **Conventions**: Azul keeps [mostly similar conventions](https://github.com/Ransomwave/azul/wiki/Sync-details#script-types) to Rojo, but with some differences. For example, Azul deals away with the `.init.lua` paradigm and instead uses folder structures that directly map to Roblox instances.
+1. Install the CLI and plugin in [Installation](/getting-started/installation/).
+2. Open a project folder locally and run `azul`.
+3. Open your place in Studio and click **Connect** in the Azul plugin.
+4. Start editing scripts and watch both sides stay in sync.
+
+For full setup details, continue to [Project Setup](/getting-started/projects/).
+
+## Key differences from Rojo
+
+- **Studio-first flow**: Place hierarchy is authored in Studio, then mirrored locally.
+- **No required project file**: You can start without a `default.project.json`.
+- **Targeted push tools**: Use `azul push` mappings for repeatable imports.
+- **Rojo mode only when needed**: Keep native behavior by default, opt into compatibility with `--rojo`.

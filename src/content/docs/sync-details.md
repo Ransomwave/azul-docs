@@ -3,30 +3,41 @@ title: Sync Details
 description: Learn about how Azul syncs files between Studio and your local filesystem.
 ---
 
-Understand how Azul syncs files from Studio to your local filesystem.
+Azul mirrors the Studio hierarchy into your local `syncDir` (default: `./sync`).
 
-### Simple Scripts
+Use this page to understand how instance names, nesting, and script types map to files.
 
-An example of a single server Script instance:
+## Basic mapping
 
-- Roblox: `ReplicatedStorage.Modules.MyServerScript`
-- Filesystem: `sync\ReplicatedStorage\Modules\MyServerScript.server.luau`
+Single Script instance:
 
-### Nested Scripts
+- Studio: `ReplicatedStorage.Modules.MyServerScript`
+- Filesystem: `sync/ReplicatedStorage/Modules/MyServerScript.server.luau`
 
-Nested instances are represented as a new folder besides the parent Script. For example, a Script nested inside another Script:
+## Nested instances under scripts
 
-- Roblox: `ServerScriptService.Game.ParentScript.NestedScript`
+When a script has children, Azul creates a sibling folder with the script name.
+
+Example:
+
+- Studio: `ServerScriptService.Game.ParentScript.NestedScript`
 - Filesystem:
-  - `sync\ServerScriptService\Game\ParentScript.server.luau`
-  - `sync\ServerScriptService\Game\ParentScript\NestedScript.server.luau`
+  - `sync/ServerScriptService/Game/ParentScript.server.luau`
+  - `sync/ServerScriptService/Game/ParentScript/NestedScript.server.luau`
 
-### Script Types
+## Script type suffixes
 
-Script types are indicated by suffixes:
+Azul determines script class from filename suffix:
 
 | Studio        | Filesystem                   |
 | ------------- | ---------------------------- |
 | Server Script | `*.server.luau`              |
 | Local Script  | `*.client.luau`              |
 | Module Script | No suffix or `*.module.luau` |
+
+## Important behavior notes
+
+- Studio remains the source of truth for hierarchy and instance creation.
+- Editing script contents locally syncs back to Studio.
+- Creating arbitrary new local files does not always imply creating new Studio instances.
+- Use `azul build` or `azul push` when you need to import local-only content.

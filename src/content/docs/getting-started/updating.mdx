@@ -3,28 +3,42 @@ title: Updating Azul
 description: Update Azul to the latest version.
 ---
 
-# Daemon
+## Update the CLI
 
-## Guided
+### If installed with npm (most users)
 
-Download the Azul repository once again, and run the install script for your OS (`install-windows.ps1`, `install-macos-linux.sh`) to automatically update to the latest version.
+Run:
 
-## Manually
-
-To update the Azul Daemon manually, you can use `git` to get the latest changes from the Azul repository.
-
-Open your terminal in the Azul repository folder and run:
-
+```bash
+npm install -g azul-sync@latest
 ```
+
+Then verify:
+
+```bash
+azul --version
+```
+
+### If installed from source
+
+1. Pull latest changes in your local clone.
+2. Rebuild and reinstall globally.
+
+```bash
 git pull
+npm install
+npm run build
+npm install -g .
 ```
 
-# Plugin
+## Update the Studio plugin
 
-## Automatically
+### Automatic update
 
-Updating the Azul Plugin is as simple as clicking the "Update" button in Studio: `Plugins > Manage Plugins > Azul > Update`.
+In Studio, open **Plugins > Manage Plugins > Azul > Update**.
 
-## Manually
+### Manual update
 
-If you installed the Plugin manually, you have to remove the old version from your plugins folder & [get the latest version](https://github.com/Ransomwave/azul/tree/main/plugin#method-2-manual-install-via-place-file).
+If you installed a local/manual plugin copy, remove the old version and install the latest plugin build from:
+
+https://github.com/Ransomwave/azul/tree/main/plugin

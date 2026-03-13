@@ -1,34 +1,58 @@
 ---
 title: Configuration
-description: Configure Azul to suit your needs.
+description: Configure daemon defaults and plugin/place settings.
 ---
 
-Configure Azul to your liking!
+Azul has two configuration layers:
 
-## Daemon
+1. **CLI user config** (on your machine): default daemon behavior.
+2. **Per-place config** (inside Studio): project-specific overrides and push mappings.
 
-Edit `src/config.ts` to customize:
+## CLI user config
+
+Use:
+
+```bash
+azul config
+```
+
+to open your config file in your default editor, or:
+
+```bash
+azul config --path
+```
+
+to print its location.
+
+Common fields:
 
 - **`port`**: Port used for communication between the Desktop Daemon and Studio Plugin.
 - **`syncDir`**: Directory where the DataModel will be mirrored.
 - **`sourcemapPath`**: Path to the generated `sourcemap.json` file.
-- **`scriptExtension`**: (`.lua` vs `.luau`)
-- **`deleteOrphansOnConnect`**: Whether to delete unmapped files in the sync directory after a new connection/full snapshot. These files are those that don't correspond to any instance in the DataModel. They could be leftovers from previous syncs or files created manually in the sync directory.
-- **`debugMode`**: Enable or disable debug logging.
+- **`scriptExtension`**: Script extension (`.luau` by default).
+- **`fileWatchDebounce`**: Delay used for local file watcher events.
+- **`deleteOrphansOnConnect`**: Delete unmapped files on full snapshot.
+- **`suffixModuleScripts`**: Suffix ModuleScripts with `.module`.
+- **`debugMode`**: Enable verbose daemon logs.
 
-## Plugin
+## Plugin settings
 
-The plugin's settings can be edited from the GUI or by editing `AzulSync.luau`:
+Plugin settings are edited in the plugin UI in Studio.
 
-The following settings are always "Global":
+### Global plugin settings
 
-- **Debug Mode**: Enable or disable debug logging.
-- **Silent Mode**: Suppress all Plugin print statements except for errors.
+- **Debug Mode**: Extra plugin-side logging.
+- **Silent Mode**: Reduces non-error plugin logs.
 
-The following settings can be set to a "Global" or "Project" scope:
+### Global or project-scoped settings
 
-- **Scope**: Whether settings should be global (applies to all projects) or per-project (applies only to the currently opened Place).
-- **Websocket URL**: Port used for communication between the Desktop Daemon and Studio Plugin. (`ws://localhost:yourport`)
-- **Service List**: List of services to include/exclude based on the selected List Type.
-  - **Service List Type`**: Whether the service list is treated as a _whitelist_ or _blacklist_.
-- **Excluded Parents**: Parents to exclude from syncing _(i.e. `ServerStorage.RecPlugins`, a Folder managed by an external plugin you don't want to sync)_.
+- **Scope**: Apply as global defaults or per-place settings.
+- **WebSocket URL**: Usually `ws://localhost:<port>` and should match daemon port.
+- **Service List** + **Service List Type**: Include/exclude root services.
+- **Excluded Parents**: Exclude paths (for example plugin-managed folders).
+
+## Per-place daemon config (ServerStorage.Azul.Config)
+
+For team workflows, you can store daemon overrides and `pushMappings` inside the place.
+
+See [Advanced Usage](/advanced-usage/) for a full example table and Lua config snippet.

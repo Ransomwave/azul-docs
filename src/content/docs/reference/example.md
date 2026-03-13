@@ -1,11 +1,48 @@
 ---
-title: Example Reference
-description: A reference page in my new Starlight docs site.
+title: CLI Quick Reference
+description: Fast lookup for common Azul commands.
 ---
 
-Reference pages are ideal for outlining how things work in terse and clear terms.
-Less concerned with telling a story or addressing a specific use case, they should give a comprehensive outline of what you're documenting.
+## Start sync
 
-## Further reading
+```bash
+azul
+```
 
-- Read [about reference](https://diataxis.fr/reference/) in the Diátaxis framework
+## Build local files into Studio
+
+```bash
+azul build
+azul build --from-sourcemap sourcemap.json
+azul build --rojo --rojo-project default.project.json
+```
+
+## Push a specific folder
+
+```bash
+azul push -s src/Server -d ServerScriptService.Server
+azul push -s Packages -d ReplicatedStorage.Packages --destructive --rojo
+```
+
+## Generate sourcemap
+
+```bash
+azul pack
+azul pack -o sourcemap.json --scripts-only
+```
+
+## Open config
+
+```bash
+azul config
+azul config --path
+```
+
+## Global options
+
+- `--debug` verbose logs
+- `--no-warn` skip confirmations
+- `--sync-dir` override sync folder
+- `--port` override daemon port
+
+For full explanations, see [Commands](/commands/).

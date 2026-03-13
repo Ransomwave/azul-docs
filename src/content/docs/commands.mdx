@@ -1,0 +1,134 @@
+---
+title: Commands
+description: CLI reference and practical command examples.
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Azul is used from the terminal with the `azul` command.
+
+## Syntax notes
+
+- `[value]` means optional.
+- `--flag value` and `--flag=value` are both accepted.
+- Short aliases are available for some options.
+
+## `azul`
+
+Start live sync daemon:
+
+```bash
+azul [command] [options]
+```
+
+### Global options
+
+| Option              | Short | Description               |
+| ------------------- | ----- | ------------------------- |
+| `--help`            | `-h`  | Show help text            |
+| `--version`         |       | Print Azul version        |
+| `--debug`           |       | Enable verbose debug logs |
+| `--no-warn`         |       | Skip confirmation prompts |
+| `--sync-dir [PATH]` |       | Set sync directory        |
+| `--port [NUMBER]`   |       | Set daemon port           |
+
+Example:
+
+```bash
+azul --sync-dir ./sync --port 8080
+```
+
+## `azul build`
+
+One-time push from local filesystem into Studio.
+
+```bash
+azul build [options]
+```
+
+| Option                    | Description                    |
+| ------------------------- | ------------------------------ |
+| `--from-sourcemap [FILE]` | Build from sourcemap data      |
+| `--rojo`                  | Enable Rojo-compatible parsing |
+| `--rojo-project [FILE]`   | Override Rojo project path     |
+
+Examples:
+
+```bash
+azul build
+azul build --from-sourcemap ./sourcemap.json
+azul build --rojo --rojo-project default.project.json
+```
+
+## `azul push`
+
+Selective push from local files to a specific Studio destination.
+
+```bash
+azul push [options]
+```
+
+| Option                    | Short | Description                     |
+| ------------------------- | ----- | ------------------------------- |
+| `--source [DIR]`          | `-s`  | Local source folder             |
+| `--destination [PATH]`    | `-d`  | Studio destination path         |
+| `--from-sourcemap [FILE]` |       | Push from sourcemap data        |
+| `--destructive`           |       | Wipe destination children first |
+| `--no-place-config`       |       | Ignore place config mappings    |
+| `--rojo`                  |       | Enable Rojo-compatible parsing  |
+| `--rojo-project [FILE]`   |       | Override Rojo project path      |
+
+Example:
+
+```bash
+azul push -s Packages -d ReplicatedStorage.Packages --destructive --rojo
+```
+
+<Aside type="tip">
+  Use per-place `pushMappings` to run `azul push` without repeating paths. See{" "}
+  <a href="/advanced-usage/">Advanced Usage</a>.
+</Aside>
+
+## `azul pack`
+
+Serialize Studio instance properties into sourcemap.json for hermetic builds.
+
+```bash
+azul pack [options]
+```
+
+| Option            | Short | Description                          |
+| ----------------- | ----- | ------------------------------------ |
+| `--output [FILE]` | `-o`  | Output sourcemap path                |
+| `--scripts-only`  |       | Serialize only scripts + descendants |
+
+Example:
+
+```bash
+azul pack -o sourcemap.json
+```
+
+<Aside type="caution">
+  Not all Roblox property types can be fully serialized (for example Terrain and
+  some CSG/mesh data). Keep a `.rbxl` backup alongside your source-controlled
+  files for safety.
+</Aside>
+
+## `azul config`
+
+Opens the Azul config file in your default editor.
+
+```bash
+azul config [options]
+```
+
+| Option   | Description            |
+| -------- | ---------------------- |
+| `--path` | Print config file path |
+
+Examples:
+
+```bash
+azul config
+azul config --path
+```

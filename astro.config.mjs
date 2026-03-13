@@ -7,28 +7,49 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "Azul",
+      head: [
+        {
+          tag: "link",
+          attrs: {
+            rel: "icon",
+            type: "image/png",
+            href: "/favicon.png",
+          },
+        },
+      ],
       social: [
         {
           icon: "github",
           label: "GitHub",
-          href: "https://github.com/withastro/starlight",
+          href: "https://github.com/Ransomwave/azul",
         },
       ],
       sidebar: [
         {
-          label: "Guides",
+          label: "Start Here",
           items: [
-            // Each item here is one entry in the navigation menu.
-            { label: "Example Guide", slug: "guides/example" },
+            { label: "Overview", slug: "" },
+            { label: "Installation", slug: "getting-started/installation" },
+            { label: "Project Setup", slug: "getting-started/projects" },
+            { label: "Updating Azul", slug: "getting-started/updating" },
           ],
         },
         {
-          label: "Getting Started",
-          autogenerate: { directory: "getting-started" },
+          label: "Core Docs",
+          items: [
+            { label: "Commands", slug: "commands" },
+            { label: "Configuration", slug: "configuration" },
+            { label: "Sync Details", slug: "sync-details" },
+            { label: "Advanced Usage", slug: "advanced-usage" },
+          ],
+        },
+        {
+          label: "Guides",
+          items: [{ label: "Common Workflows", slug: "guides/example" }],
         },
         {
           label: "Reference",
-          autogenerate: { directory: "reference" },
+          items: [{ label: "CLI Quick Reference", slug: "reference/example" }],
         },
       ],
     }),

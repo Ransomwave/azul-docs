@@ -1,12 +1,6 @@
-# Starlight Starter Kit: Basics
+# Azul Docs
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
-
-```
-npm create astro@latest -- --template starlight
-```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Documentation site for Azul, built with Astro + Starlight.
 
 ## 🚀 Project Structure
 
@@ -25,25 +19,32 @@ Inside of your Astro + Starlight project, you'll see the following folders and f
 └── tsconfig.json
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+Docs pages live in `src/content/docs/`.
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
-
-Static assets, like favicons, can be placed in the `public/` directory.
+- Sidebar/navigation is configured in `astro.config.mjs`.
+- Home splash page is `src/content/docs/index.mdx`.
+- Getting started content is in `src/content/docs/getting-started/`.
 
 ## 🧞 Commands
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| Command           | Action                                       |
+| :---------------- | :------------------------------------------- |
+| `npm install`     | Installs dependencies                        |
+| `npm run dev`     | Starts local dev server at `localhost:4321`  |
+| `npm run build`   | Build your production site to `./dist/`      |
+| `npm run preview` | Preview your build locally, before deploying |
+| `npm run check`   | Run Astro checks (if configured)             |
 
-## 👀 Want to learn more?
+## Writing guidelines
 
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+- Keep docs user-facing and task-oriented.
+- Prefer local doc links over external wiki links.
+- Keep command examples copy-paste ready.
+- Update both page content and sidebar labels when adding new sections.
+
+## Useful links
+
+- Starlight docs: https://starlight.astro.build/
+- Astro docs: https://docs.astro.build/

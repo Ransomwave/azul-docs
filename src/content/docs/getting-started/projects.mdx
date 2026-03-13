@@ -1,45 +1,56 @@
 ---
 title: Project Setup
-description: Get started with Azul in minutes.
+description: Start your first sync session and build from local files.
 ---
 
 import { Aside } from "@astrojs/starlight/components";
 
-Learn how Azul structures your project & how to manage it.
+This page covers the two most common starting points:
 
-## Creating a New Project
+1. You want to start syncing a place to local files.
+2. You already have local files and want to push them into Studio.
 
-The concept of a "project" is a bit symbolic in Azul. Since the source of truth is Studio, your project is essentially any place in Studio where you want to sync files from/to. Azul-specific settings also live within each Studio place.
+## Start a new sync session (most common)
 
-To start a new sync session with Azul:
+In Azul, your place in Studio is the source of truth. The local folder is a mirror.
 
-1. Open Roblox Studio and create a new place or open an existing one.
-2. Open an empty folder on your local filesystem.
-3. With the terminal in the local folder, run
-   ```
+1. Create or open a local folder for your project.
+2. Open that folder in your editor and run:
+
+   ```bash
    azul
    ```
-4. In Roblox Studio, click on the "Connect" button.
 
-This will start a new sync session between the Studio place and your local folder. Try creating, renaming, or removing a Script from the Explorer, and see it reflected in your local folder!
+3. Open the target place in Roblox Studio.
+4. In the Azul plugin, click **Connect**.
+5. Make a test edit (for example, create a Script in Studio) and confirm it appears locally.
+
+That is all you need for live sync.
 
 <Aside type="note">
-  Azul is designed to work in a Studio-first workflow. Creating new local files
-  while a sync session is active will not translate into a new Instance in
-  Studio. Instead, create new Instances in Studio (or, if in VSCode, use a tool
-  like [Verde](https://github.com/dvitash/verde)).
+  While a session is running, new local files are not automatically treated as
+  new Studio instances. For best results, create the instance in Studio first,
+  then edit the synced file locally.
 </Aside>
 
-## Building from an Existing Project
+## Build from an existing local project
 
-Many times, you may have an existing Azul project stored locally (for example, in version control) that you want to push into Studio.
+Use this when your files already exist on disk and you want to create/overwrite matching instances in Studio.
 
-To build an existing Azul project into Studio:
+1. Open the local project folder.
+2. Run:
 
-1. Open the folder containing your existing Azul project
-2. With your terminal open in that folder, run
    ```
    azul build
    ```
-3. Open Roblox Studio and the place you want to sync with.
-4. Click on the "Connect" button in the Azul plugin.
+
+3. Confirm the prompt in your terminal.
+4. Open Studio and connect with the plugin.
+
+`azul build` creates or overwrites matching instances, but does not delete unrelated existing instances.
+
+## Next steps
+
+- Use [Commands](/commands/) to learn `push`, `pack`, and CLI options.
+- Use [Configuration](/configuration/) to tune defaults.
+- Use [Advanced Usage](/advanced-usage/) for per-place config and workflows.
