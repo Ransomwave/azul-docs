@@ -7,14 +7,16 @@ import { Aside } from "@astrojs/starlight/components";
 
 Azul has two parts you need:
 
-- **CLI daemon** (`azul`): runs on your machine and syncs files.
+- **Daemon (CLI)** (`azul`): runs on your machine and syncs files.
 - **Companion plugin**: runs in Roblox Studio and connects to the daemon.
 
-Install both before starting your first sync session.
+You must install both before starting your first sync session.
 
-## 1) Install the Azul CLI (recommended)
+## 1. Install the Azul Daemon
 
-1. Install Node.js (LTS) from [nodejs.org](https://nodejs.org/).
+### Recommended install (npm)
+
+1. Install Node.js from [nodejs.org](https://nodejs.org/). It includes `npm`, which is used to install the Azul CLI.
 2. Install Azul globally:
 
    ```bash
@@ -27,19 +29,10 @@ Install both before starting your first sync session.
    azul --version
    ```
 
-## 2) Install the Roblox plugin
+### Manual install (from source)
 
-Install from the Creator Store:
-
-- https://create.roblox.com/store/asset/79510309341601/Azul-Companion-Plugin
-
-<Aside type="note">
-  If the plugin does not appear in Studio, see plugin troubleshooting in the
-  main repository:
-  https://github.com/Ransomwave/azul/tree/main/plugin#troubleshooting
-</Aside>
-
-## Manual CLI install (from source)
+<details>
+<summary>Click to expand</summary>
 
 1. Clone the repository or download the ZIP and extract it.
 2. Install Node.js from [nodejs.org](https://nodejs.org/) (or package manager):
@@ -71,7 +64,18 @@ Install from the Creator Store:
    npm install -g .
    ```
 
-## Recommended editor tooling
+</details>
+
+## 2. Install the Roblox plugin
+
+1. Install from the Creator Store: [Azul Companion Plugin](https://create.roblox.com/store/asset/79510309341601/Azul-Companion-Plugin)
+
+<Aside type="note">
+  If the plugin does not appear in Studio, see [plugin
+  troubleshooting](https://github.com/Ransomwave/azul/tree/main/plugin#troubleshooting).
+</Aside>
+
+## Recommended tooling
 
 While these tools aren't required to use Azul, they are highly recommended to get the best experience out of Azul:
 
@@ -95,6 +99,6 @@ To get Luau-LSP working with Azul, open your `User Settings (JSON)` from the com
 
 Luau-LSP is also available for other IDEs like [IntelliJ](https://plugins.jetbrains.com/plugin/24957-luau) and [Neovim](https://github.com/lopi-py/luau-lsp.nvim), but setup may vary.
 
-### Verde (VSCode Extension)
+### Verde
 
-[Verde](https://marketplace.visualstudio.com/items?itemName=Dvitash.verde) is a VSCode extension that mimics the Roblox Studio Explorer and Properties windows. It works great alongside Azul to provide a seamless development experience.
+[Verde](https://marketplace.visualstudio.com/items?itemName=Dvitash.verde) is a great VSCode extension that mimics the Roblox Studio Explorer and Properties windows. It works great alongside Azul to provide a seamless development experience.
