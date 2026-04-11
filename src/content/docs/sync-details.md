@@ -11,19 +11,29 @@ Use this page to understand how instance names, nesting, and script types map to
 
 Single Script instance:
 
-- Studio: `ReplicatedStorage.Modules.MyServerScript`
-- Filesystem: `sync/ReplicatedStorage/Modules/MyServerScript.server.luau`
+- Studio: `ServerScriptService.MyServerScript`
+- Filesystem: `sync/ServerScriptService/MyServerScript.server.luau`
 
-## Nested instances under scripts
+## Nested scripts
 
 When a script has children, Azul creates a sibling folder with the script name.
 
 Example:
 
-- Studio: `ServerScriptService.Game.ParentScript.NestedScript`
+- Studio:
+
+```
+📜 ParentScript
+  - 📜 NestedScript
+```
+
 - Filesystem:
-  - `sync/ServerScriptService/Game/ParentScript.server.luau`
-  - `sync/ServerScriptService/Game/ParentScript/NestedScript.server.luau`
+
+```
+📜 ParentScript.server.luau
+📂 ParentScript/
+  - 📜 NestedScript.server.luau
+```
 
 ## Script type suffixes
 
