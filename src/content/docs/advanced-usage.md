@@ -7,20 +7,33 @@ Use these features when you want predictable team behavior across places and rep
 
 ## Per-place Daemon Configuration
 
-You can store daemon overrides inside Studio so collaborators get project-specific behavior automatically.
+You can store Daemon setting overrides inside Studio. This allows you to specify settings like push mappings that everyone on the project can use without manual setup.
 
-Create a ModuleScript at `ServerStorage.Azul.Config` that returns a table.
+This configuration should be placed in a ModuleScript at `ServerStorage.Azul.Config`.
 
-| Option                   | Type                      | Description                                                                                                                                                                          |
-| ------------------------ | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `port`                   | `number`                  | The TCP port the daemon should listen on. Defaults to `8080`.                                                                                                                        |
-| `debugMode`              | `boolean`                 | If set to `true`, the daemon will emit extra debug logs during the Studio plugin/daemon handshake.                                                                                   |
-| `deleteOrphansOnConnect` | `boolean`                 | If set to `true`, the daemon will delete files in the sync directory that are not mapped to any instances when it connects. This helps keep the local mirror clean between sessions. |
-| `rojoMode`               | `boolean`                 | If set to `true`, enables Rojo compatibility mode for push operations.                                                                                                               |
-| `pushMappings`           | `table` of configurations | Pre-specify local-to-Studio push paths so `azul push` can run without manual `-s/-d` arguments.                                                                                      |
+When the Daemon starts, it looks for this ModuleScript and merges its returned table with the CLI config.
+
+### Global options
+
+| Option         | Type                      | Description                                                                                        |
+| -------------- | ------------------------- | -------------------------------------------------------------------------------------------------- |
+| `port`         | `number`                  | The TCP port the daemon should listen on.                                                          |
+| `debugMode`    | `boolean`                 | If set to `true`, the daemon will emit extra debug logs during the Studio plugin/daemon handshake. |
+| `pushMappings` | `table` of configurations | Pre-specify local-to-Studio push paths so `azul push` can run without manual `-s/-d` arguments.    |
+
+### Push Mapping Options
+
+Each push mapping supports the following options:
+| Option | Type | Description |
+|--------|------|-------------|
+| `deleteOrphansOnConnect` | `boolean` | If set to `true`, the daemon will delete files in the sync directory that are not mapped to any instances when it connects. This helps keep the local mirror clean between sessions. |
+| `rojoMode` | `boolean` | If set to `true`, enables Rojo compatibility mode for push operations. |
+| `fromSourcemap` | `string` | Path to a JSON file containing sourcemap information for resolving local paths to Studio instances. |
+
+### Example Config:
 
 ```lua
--- ServerStorage/Azul/Config
+-- ServerStorage.Azul.Config
 -- Returned table is sent to the Azul daemon when it connects.
 
 return {
@@ -34,9 +47,9 @@ return {
     -- not mapped to any instances. Keeps the local mirror clean between sessions.
     deleteOrphansOnConnect = true,
 
-    -- One or more push mappings.
+    -- Push mappings allow you to pre-specify local-to-Studio push paths so you can run `azul push` without manual `-s/-d` arguments.
     pushMappings = {
-        -- Mapping 1: map "Packages" to ReplicatedStorage.Packages
+        -- Mapping 1: Packages from the tool "Wally", in Rojo mode
         {
             source = "Packages",
             destination = { "ReplicatedStorage", "Packages" },
@@ -44,11 +57,12 @@ return {
             rojoMode = true,
         },
 
-        -- Mapping 2: map "src/Server" to ServerScriptService.Server
+        -- Mapping 2: A local "Libraries" folder that contains utility modules using Azul-style sourcemaps
         {
-            source = "src/Server",
-            destination = { "ServerScriptService", "Server" },
+            source = "Libraries",
+            destination = { "ServerScriptService", "Libraries" },
             destructive = false,
+            fromSourcemap = "./Libraries/sourcemap.json",
         },
     },
 }
@@ -59,11 +73,12 @@ return {
 Use Rojo mode when importing from Rojo-based folder/project setups.
 
 ```bash
+azul build --rojo
 azul build --rojo --rojo-project default.project.json
-azul push --rojo -s Packages -d ReplicatedStorage.Packages
+azul push -s Packages -d ReplicatedStorage.Packages --rojo
 ```
 
-In this mode, Azul reads `default.project.json` (or your override path) to interpret structure.
+In this mode, Azul reads `default.project.json` (or the provided project file) to interpret Rojo-style structure.
 
 ## Package Management
 
