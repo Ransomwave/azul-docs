@@ -15,11 +15,11 @@ When the Daemon starts, it looks for this ModuleScript and merges its returned t
 
 ### Global options
 
-| Option         | Type                      | Description                                                                                        |
-| -------------- | ------------------------- | -------------------------------------------------------------------------------------------------- |
-| `port`         | `number`                  | The TCP port the daemon should listen on.                                                          |
-| `debugMode`    | `boolean`                 | If set to `true`, the daemon will emit extra debug logs during the Studio plugin/daemon handshake. |
-| `pushMappings` | `table` of configurations | Pre-specify local-to-Studio push paths so `azul push` can run without manual `-s/-d` arguments.    |
+| Option         | Type                     | Description                                                                                        |
+| -------------- | ------------------------ | -------------------------------------------------------------------------------------------------- |
+| `port`         | `number`                 | The TCP port the daemon should listen on.                                                          |
+| `debugMode`    | `boolean`                | If set to `true`, the daemon will emit extra debug logs during the Studio plugin/daemon handshake. |
+| `pushMappings` | `table` of push mappings | Pre-specify local-to-Studio push paths so `azul push` can run without manual `-s/-d` arguments.    |
 
 ### Push Mapping Options
 
@@ -40,9 +40,6 @@ return {
     -- TCP port the daemon should be listening on (defaults to 8080 in the CLI config).
     port = 8080,
 
-    -- Emit extra debug logs from the Studio plugin/daemon handshake.
-    debugMode = false,
-
     -- When the daemon connects, delete files in the sync directory that are
     -- not mapped to any instances. Keeps the local mirror clean between sessions.
     deleteOrphansOnConnect = true,
@@ -51,7 +48,7 @@ return {
     pushMappings = {
         -- Mapping 1: Packages from the tool "Wally", in Rojo mode
         {
-            source = "Packages",
+            source = "./Packages",
             destination = { "ReplicatedStorage", "Packages" },
             destructive = true,
             rojoMode = true,
@@ -59,7 +56,7 @@ return {
 
         -- Mapping 2: A local "Libraries" folder that contains utility modules using Azul-style sourcemaps
         {
-            source = "Libraries",
+            source = "./Libraries",
             destination = { "ServerScriptService", "Libraries" },
             destructive = false,
             fromSourcemap = "./Libraries/sourcemap.json",
@@ -100,7 +97,7 @@ Add a push mapping in per-place config so you can run plain `azul push`:
 -- Example push mapping for Wally packages in the per-place daemon configuration
 pushMappings = {
     {
-        source = "Packages",
+        source = "./Packages",
         destination = { "ReplicatedStorage", "Packages" },
         destructive = true,
         rojoMode = true,
