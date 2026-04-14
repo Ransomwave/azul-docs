@@ -9,6 +9,7 @@ Azul is used from the terminal with the `azul` command.
 
 ## Syntax notes
 
+- `<value>` means required.
 - `[value]` means optional.
 - `--flag value` and `--flag=value` are both accepted.
 - Short aliases are available for some options.
@@ -23,14 +24,14 @@ azul [command] [options]
 
 ### Global options
 
-| Option              | Short | Description               |
-| ------------------- | ----- | ------------------------- |
-| `--help`            | `-h`  | Show help text            |
-| `--version`         |       | Print Azul version        |
-| `--debug`           |       | Enable verbose debug logs |
-| `--no-warn`         |       | Skip confirmation prompts |
-| `--sync-dir [PATH]` |       | Set sync directory        |
-| `--port [NUMBER]`   |       | Set daemon port           |
+| Option             | Short | Description               |
+| ------------------ | ----- | ------------------------- |
+| `--help`           | `-h`  | Show help text            |
+| `--version`        |       | Print Azul version        |
+| `--debug`          |       | Enable verbose debug logs |
+| `--no-warn`        |       | Skip confirmation prompts |
+| `--sync-dir <dir>` |       | Set sync directory        |
+| `--port <number>`  |       | Set daemon port           |
 
 Example:
 
@@ -46,11 +47,12 @@ One-time push from local filesystem into Studio.
 azul build [options]
 ```
 
-| Option                    | Description                    |
-| ------------------------- | ------------------------------ |
-| `--from-sourcemap [FILE]` | Build from sourcemap data      |
-| `--rojo`                  | Enable Rojo-compatible parsing |
-| `--rojo-project [FILE]`   | Override Rojo project path     |
+| Option                    | Description                                                                                       |
+| ------------------------- | ------------------------------------------------------------------------------------------------- |
+| `--from-sourcemap [file]` | Build from sourcemap data. If passed without file, uses `./sourcemap.json`                        |
+| `--rojo`                  | Enable Rojo-compatible parsing                                                                    |
+| `--rojo-project <file>`   | Override Rojo project path                                                                        |
+| `--destructive`           | Completely replace Studio state with your local project (all instances, scripts, and properties). |
 
 Examples:
 
@@ -70,13 +72,13 @@ azul push [options]
 
 | Option                    | Short | Description                     |
 | ------------------------- | ----- | ------------------------------- |
-| `--source [DIR]`          | `-s`  | Local source folder             |
-| `--destination [PATH]`    | `-d`  | Studio destination path         |
-| `--from-sourcemap [FILE]` |       | Push from sourcemap data        |
+| `--source <dir>`          | `-s`  | Local source folder             |
+| `--destination <path>`    | `-d`  | Studio destination path         |
+| `--from-sourcemap [file]` |       | Push from sourcemap data        |
 | `--destructive`           |       | Wipe destination children first |
 | `--no-place-config`       |       | Ignore place config mappings    |
 | `--rojo`                  |       | Enable Rojo-compatible parsing  |
-| `--rojo-project [FILE]`   |       | Override Rojo project path      |
+| `--rojo-project <file>`   |       | Override Rojo project path      |
 
 Example:
 
@@ -99,7 +101,7 @@ azul pack [options]
 
 | Option            | Short | Description                          |
 | ----------------- | ----- | ------------------------------------ |
-| `--output [FILE]` | `-o`  | Output sourcemap path                |
+| `--output <file>` | `-o`  | Output sourcemap path                |
 | `--scripts-only`  |       | Serialize only scripts + descendants |
 
 Example:
@@ -109,9 +111,12 @@ azul pack -o sourcemap.json
 ```
 
 <Aside type="caution">
-  Not all Roblox property types can be fully serialized (for example Terrain and
-  some CSG/mesh data). Keep a `.rbxl` backup alongside your source-controlled
-  files for safety.
+  Not all property types can be properly serialized by Azul due to certain Roblox API limitations.
+
+These include: Terrain, Unions (CSG Parts), `MeshPart.MeshId`.
+
+Support for these types is planned in the future!
+
 </Aside>
 
 ## `azul config`
