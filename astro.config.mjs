@@ -17,6 +17,13 @@ export default defineConfig({
             href: "/favicon.png",
           },
         },
+        {
+          tag: "meta",
+          attrs: {
+            property: "og:site_name",
+            content: "Azul",
+          },
+        },
       ],
       social: [
         {
