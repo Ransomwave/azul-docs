@@ -1,0 +1,64 @@
+---
+title: Sync Details
+description: Learn about how Azul syncs files between Studio and your local filesystem.
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Azul mirrors the Studio hierarchy into your local `syncDir` (default: `./sync`).
+
+Use this page to understand how instance names, nesting, and script types map to files.
+
+## Basic mapping
+
+Single Script instance:
+
+- Studio: `ServerScriptService.MyServerScript`
+- Filesystem: `sync/ServerScriptService/MyServerScript.server.luau`
+
+## Nested scripts
+
+When a script has children, Azul creates a sibling folder with the script name.
+
+- Studio:
+
+  ```
+  📜 ParentScript
+    - 📜 NestedScript
+  ```
+
+- Filesystem:
+
+  ```
+  📜 ParentScript.server.luau
+  📂 ParentScript/
+    - 📜 NestedScript.server.luau
+  ```
+
+If you're familiar with other popular Roblox sync tools, this may seem a bit unusual. Unlike the existing `init.luau` convention, this design allows Azul to support arbitrary nesting of scripts without losing 1:1 Studio-to-filesystem mapping.
+
+For a more in-depth explanation of the reason behind this design choice, see [this article](https://ransomwave.games/blog/a-case-against-init-luau).
+
+## Script type suffixes
+
+Azul determines script class from filename suffix:
+
+| Studio        | Filesystem                   |
+| ------------- | ---------------------------- |
+| Server Script | `*.server.luau`              |
+| Local Script  | `*.client.luau`              |
+| Module Script | No suffix or `*.module.luau` |
+
+## Script creation, deletion & renaming
+
+Azul treats **Studio as the exclusive source of truth for Instance creation, deletion, and renaming**.
+
+Creating, deleting, or renaming instances in Studio will sync the changes to your local filesystem. However, doing the same with files in the local `syncDir` during an active session will not affect Studio.
+
+The recommended workflow is to manage your instance hierarchy in Studio, and edit script contents in your editor.
+
+<Aside type="tip">
+  If you need to create new scripts from your local filesystem, use [`azul
+  build`](/commands/#azul-build) or [`azul push`](/commands/#azul-push) to sync
+  them to Studio.
+</Aside>
