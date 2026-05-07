@@ -26,14 +26,18 @@ to print its location.
 
 Common fields:
 
-- **`port`**: Port used for communication between the Desktop Daemon and Studio Plugin.
-- **`syncDir`**: Directory where the DataModel will be mirrored.
-- **`sourcemapPath`**: Path to the generated `sourcemap.json` file.
-- **`scriptExtension`**: Script extension (`.luau` by default).
-- **`fileWatchDebounce`**: Delay used for local file watcher events.
-- **`deleteOrphansOnConnect`**: Delete unmapped files on full snapshot.
-- **`suffixModuleScripts`**: Suffix ModuleScripts with `.module`.
-- **`debugMode`**: Enable verbose daemon logs.
+| Field                        | Type      | Description                                                               |
+| ---------------------------- | --------- | ------------------------------------------------------------------------- |
+| **`daemonPath`**             | `string`  | Path to the Desktop Daemon executable.                                    |
+| **`port`**                   | `number`  | Port used for communication between the Desktop Daemon and Studio Plugin. |
+| **`syncDir`**                | `string`  | Directory where the DataModel will be mirrored.                           |
+| **`sourcemapPath`**          | `string`  | Path for the generated `sourcemap.json` file.                             |
+| **`scriptExtension`**        | `string`  | Script extension (`.luau` by default).                                    |
+| **`fileWatchDebounce`**      | `number`  | Delay used for local file watcher events.                                 |
+| **`deleteOrphansOnConnect`** | `boolean` | Delete unmapped files on full snapshot.                                   |
+| **`suffixModuleScripts`**    | `boolean` | Suffix ModuleScripts with `.module`.                                      |
+| **`checkForUpdates`**        | `boolean` | Whether to check for updates on the NPM registry.                         |
+| **`debugMode`**              | `boolean` | Enable verbose daemon logs.                                               |
 
 ## Plugin settings
 
