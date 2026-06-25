@@ -62,4 +62,7 @@ export default defineConfig({
       ],
     }),
   ],
+  redirects: {
+    "/discord": "https://discord.gg/cRfsWKtjVc",
+  },
 });
