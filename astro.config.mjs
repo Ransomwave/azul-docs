@@ -8,6 +8,11 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "Azul",
+      logo: {
+        src: "./src/assets/logo.png",
+        replacesTitle: true,
+      },
+      customCss: ["/src/styles/custom.css"],
       head: [
         {
           tag: "link",

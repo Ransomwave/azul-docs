@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+/* Dark mode colors (default) */
+:root {
+  --sl-font:
+    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --sl-color-accent-low: #00325c;
+  --sl-color-accent: #0095ff;
+  --sl-color-accent-high: #99d6ff;
+  --sl-color-white: #f0f6fc;
+  /* --sl-color-gray-1: #c9d1d9;
+  --sl-color-gray-2: #8b949e;
+  --sl-color-gray-3: #2d343e;
+  --sl-color-gray-4: #30363d;
+  --sl-color-gray-5: #21262d; */
+  --sl-color-gray-6: #161b22;
+  --sl-color-black: #0d1117;
+}
+
+/* Light mode colors */
+:root[data-theme="light"] {
+  --sl-color-accent-low: #d9efff;
+  --sl-color-accent: #007acc;
+  --sl-color-accent-high: #003a6e;
+  --sl-color-white: #0d1117;
+  --sl-color-gray-1: #24292f;
+  --sl-color-gray-2: #57606a;
+  --sl-color-gray-3: #afb8c1;
+  --sl-color-gray-4: #d0d7de;
+  --sl-color-gray-5: #eaeeef;
+  --sl-color-gray-6: #f6f8fa;
+  --sl-color-black: #ffffff;
+}
+
+h1 {
+  font-weight: 800;
+}
+
+h2 {
+  font-weight: 800;
+}
+
+h3 {
+  font-weight: 600;
+}
