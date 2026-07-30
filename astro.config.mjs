@@ -53,9 +53,33 @@ export default defineConfig({
             { label: "Commands", slug: "commands" },
             { label: "Configuration", slug: "configuration" },
             { label: "Sync Details", slug: "sync-details" },
-            { label: "Advanced Usage", slug: "advanced-usage" },
+            // { label: "Advanced Usage", slug: "advanced-usage" },
           ],
         },
+        {
+          label: "Advanced Usage",
+          items: [
+            { label: "Per-place config", slug: "advanced/place-daemon-config" },
+            {
+              label: "Rojo Compatibility",
+              slug: "advanced/rojo-compatibility",
+            },
+            {
+              label: "Package Management",
+              slug: "advanced/package-management",
+            },
+            // { label: "Distributing Code", slug: "advanced/distributing-code" },
+          ],
+        },
+        // {
+        //   label: "Project Format",
+        //   items: [
+        //     { label: "Commands", slug: "commands" },
+        //     { label: "Configuration", slug: "configuration" },
+        //     { label: "Sync Details", slug: "sync-details" },
+        //     { label: "Advanced Usage", slug: "advanced-usage" },
+        //   ],
+        // },
         {
           label: "Guides",
           items: [{ label: "Common Workflows", slug: "guides/example" }],
@@ -69,5 +93,7 @@ export default defineConfig({
   ],
   redirects: {
     "/discord": "https://discord.gg/cRfsWKtjVc",
+    "/plugin":
+      "https://create.roblox.com/store/asset/79510309341601/Azul-Companion-Plugin",
   },
 });

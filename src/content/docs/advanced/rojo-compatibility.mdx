@@ -1,0 +1,42 @@
+---
+title: Rojo Compatibility
+description: How to use Azul with Rojo projects.
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Azul features a Rojo Compatibility Mode that allows you to `build` or `push` Rojo-style projects into Roblox Studio.
+
+When this article refers to "Rojo-style" projects, it means that the project
+is structured similarly to [Rojo and its project
+format](https://rojo.space/docs/v7/project-format/). In practice, this means
+the feature will also work with tools like
+[Argon](https://argon.wiki/api/file-types#overview). Note that full support
+for these tools is not guaranteed.
+
+```bash
+azul build --rojo
+azul build --rojo --rojo-project default.project.json
+azul push -s Packages -d ReplicatedStorage.Packages --rojo
+```
+
+In this mode, Azul will try to do the following:
+
+- Read the `default.project.json` (or the provided project file) to interpret Rojo-style structure.
+- If no `default.project.json` is provided, or none is found, Azul will attempt to interpret the Rojo-style structure and push it into Studio.
+
+<Aside type="tip">
+  Azul is capable of reading nested project files, so you can have a
+  `default.project.json` in your root folder and another one in a subfolder. The
+  subfolder's project file will be used for that subfolder's contents.
+</Aside>
+
+### Non `.luau` modules
+
+Azul supports pushing the following non-luau filetypes:
+
+- [JSON Modules](https://rojo.space/docs/v7/sync-details/#json-modules)
+
+### JSON Models
+
+Since Azul 1.6.0, [JSON Model](https://rojo.space/docs/v7/sync-details/#json-models) files are supported for Rojo-style projects. If a `*.model.json` file is present, Azul will use it to create a matching instance in Studio.

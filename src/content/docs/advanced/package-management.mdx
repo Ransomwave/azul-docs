@@ -1,0 +1,30 @@
+---
+title: Package Management
+description: How to manage packages with Azul.
+---
+
+For package managers like [Wally](https://wally.run/), use `azul push` to import packages into Studio.
+
+Example:
+
+```bash
+azul push -s Packages -d ReplicatedStorage.Packages --destructive --rojo
+```
+
+Since Wally expects Rojo-style layouts, `--rojo` is usually required.
+
+### Automating Package Pushes
+
+Add a push mapping in per-place config so you can run plain `azul push`:
+
+```lua
+-- Example push mapping for Wally packages in the per-place daemon configuration
+pushMappings = {
+    {
+        source = "./Packages",
+        destination = { "ReplicatedStorage", "Packages" },
+        destructive = true,
+        rojoMode = true,
+    },
+}
+```
