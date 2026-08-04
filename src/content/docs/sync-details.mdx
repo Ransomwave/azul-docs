@@ -35,9 +35,9 @@ When a script has children, Azul creates a sibling folder with the script name.
     - 📜 NestedScript.server.luau
   ```
 
-If you're familiar with other popular Roblox sync tools, this may seem a bit unusual. Unlike the existing `init.luau` convention, this design allows Azul to support arbitrary nesting of scripts without losing 1:1 Studio-to-filesystem mapping.
+If you're familiar with other popular sync tools, this pattern may seem a bit unusual. Instead of representing nested structures through `init.luau` files, Azul follows this design to support arbitrary nesting without losing 1:1 Studio-to-filesystem mapping.
 
-For a more in-depth explanation of the reason behind this design choice, see [this article](https://ransomwave.games/blog/a-case-against-init-luau).
+For a more in-depth explanation of the reason behind this design choice, see [this article on the topic](https://ransomwave.games/blog/a-case-against-init-luau).
 
 ## Script type suffixes
 
@@ -58,7 +58,7 @@ Creating, deleting, or renaming instances in Studio will sync the changes to you
 The recommended workflow is to manage your instance hierarchy in Studio, and edit script contents in your editor.
 
 <Aside type="tip">
-  If you need to create new scripts from your local filesystem, use [`azul
+  If you need to import code from your local filesystem, use [`azul
   build`](/commands/#azul-build) or [`azul push`](/commands/#azul-push) to sync
   them to Studio.
 </Aside>
