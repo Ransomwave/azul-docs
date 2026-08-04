@@ -2,3 +2,15 @@
 title: Distributing Code
 description: How to use Azul to distribute code to other developers.
 ---
+
+At some point, you may want to share your project with other developers. Whether it's a library or a full game, you can use Azul to distribute it.
+
+This can be achieved using the [`azul pack`](/commands#azul-pack) command, which will serialize your project into a `sourcemap`.
+
+Collaborators can then either use [`azul push`](/commands#azul-push) to import the code into their own place, or use [`azul build`](/commands#azul-build) to update their local copy of the project.
+
+## Best practices
+
+- Don't source control your `./sourcemap.json` file. Since it's a living artifact, its `guid`s will change constantly for every new sync session.
+- When using `azul pack`, do not just override `./sourcemap.json` file in your repo. Instead, use the `-o` argument and give it a descriptive name (i.e. `my-game.json`)
+- If importing a full game, make sure you use `azul build` with the `--destructive` flag to remove any orphaned Instances that may have been deleted in the source project.

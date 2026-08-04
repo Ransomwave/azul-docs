@@ -68,7 +68,7 @@ export default defineConfig({
               label: "Package Management",
               slug: "advanced/package-management",
             },
-            // { label: "Distributing Code", slug: "advanced/distributing-code" },
+            { label: "Distributing Code", slug: "advanced/distributing-code" },
           ],
         },
         // {
