@@ -40,3 +40,19 @@ Azul supports pushing the following non-luau filetypes:
 ### JSON Models
 
 Since Azul 1.6.0, [JSON Model](https://rojo.space/docs/v7/sync-details/#json-models) files are supported for Rojo-style projects. If a `*.model.json` file is present, Azul will use it to create a matching instance in Studio.
+
+### Unsupported Rojo features
+
+This is a comprehensive list of unsupported Rojo features in the Rojo Compatibility Mode with the following classification:
+with the following classification:
+
+- ❌ - The feature is not available because it does not makes sense to include it
+- 🔜 - The feature is not available but it'd be nice to include it at some point
+- 🤷‍♀️ - The feature is not available yet; open to discussion about implementing this
+
+| Feature                                                           | Status | Notes                                                                                    |
+| ----------------------------------------------------------------- | ------ | ---------------------------------------------------------------------------------------- |
+| [Meta Files](https://rojo.space/docs/v7/sync-details/#meta-files) | ❌     | Supporting meta files would unecessarily complicate the build process for Rojo projects. |
+| Plain text files (`*.txt`)                                        | 🤷‍♀️     | Usage of this feature is rare.                                                           |
+| Localization Tables (`*.csv`)                                     | 🤷‍♀️     | Usage of this feature is rare.                                                           |
+| TOML Modules                                                      | 🤷‍♀️     | Usage of this feature is rare.                                                           |
