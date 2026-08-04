@@ -59,4 +59,4 @@ Plugin settings are edited in the plugin UI in Studio.
 
 For team workflows, you can store daemon overrides and `pushMappings` inside the place.
 
-See [Advanced Usage](/advanced-usage/) for a full example table and Lua config snippet.
+See the dedicated [Per-place Daemon Config](/place-daemon-config/) for a full example.
