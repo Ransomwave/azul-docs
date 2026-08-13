@@ -3,7 +3,9 @@ title: Package Management
 description: How to manage packages with Azul.
 ---
 
-For package managers like [Wally](https://wally.run/), use `azul push` to import packages into Studio.
+import { Aside } from "@astrojs/starlight/components";
+
+When using Azul with package managers like [Wally](https://wally.run/), you can use `azul push` to import packages into Studio.
 
 Example:
 
@@ -11,14 +13,41 @@ Example:
 azul push -s Packages -d ReplicatedStorage.Packages --destructive --rojo
 ```
 
-Since Wally expects Rojo-style layouts, `--rojo` is usually required.
+Rojo-style layouts are usually standard for package managers, so the `--rojo` flag is needed to automatically convert from Rojo's format to the format Azul uses.
 
-### Automating Package Pushes
+## Automating Package Pushes
 
-Add a push mapping in per-place config so you can run plain `azul push`:
+Add a push mapping in per-place config so you can run plain `azul push`. Below are push mapping templates you can use.
+
+### LPM (Luau Package Manager)
+
+LPM is a relatively new package manager for Luau. It is a great replacement for Wally, fixing many of its issues, supporting all the newest Luau features & fully supporting the Wally registry.
+
+**LPM is the recommended package manager for Azul.**
 
 ```lua
--- Example push mapping for Wally packages in the per-place daemon configuration
+pushMappings = {
+    {
+        source = "./packages/roblox",
+        destination = { "ReplicatedStorage", "Packages" },
+        destructive = true,
+        rojoMode = true,
+    },
+}
+```
+
+_For more information on LPM usage, see [the LPM documentation](https://luaupm.com/docs/)._
+
+### Wally
+
+<Aside type="caution">
+  Using Wally with Azul is not recommended. Wally has a number of issues that
+  make it difficult to use with Azul (e.g. no type exports), and it is no longer
+  actively maintained. If you are using Wally, consider switching to an
+  alternative.
+</Aside>
+
+```lua
 pushMappings = {
     {
         source = "./Packages",
@@ -28,3 +57,9 @@ pushMappings = {
     },
 }
 ```
+
+_For more information on Wally, see [the Wally website](https://wally.run/)._
+
+### Other Package Managers
+
+If you are using a different package manager, you can create a custom push mapping to import packages into Studio. The logic is the same as the examples above: specify the local source folder, the Studio destination path, and whether to enable Rojo compatibility mode.
