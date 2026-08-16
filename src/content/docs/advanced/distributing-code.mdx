@@ -11,6 +11,7 @@ Collaborators can then either use [`azul push`](/commands#azul-push) to import t
 
 ## Best practices
 
-- Don't source control your `./sourcemap.json` file. Since it's a living artifact, its `guid`s will change constantly for every new sync session.
-- When using `azul pack`, do not just override `./sourcemap.json` file in your repo. Instead, use the `-o` argument and give it a descriptive name (i.e. `my-game.json`)
-- If importing a full game, make sure you use `azul build` with the `--destructive` flag to remove any orphaned Instances that may have been deleted in the source project.
+- **Sourcemaps**
+  - Don't source control, edit, or manually alter the `./sourcemap.json`. It's a generated artifact and will be overwritten on your next sync.
+  - When distributing a sourcemap alongside your project, use `azul pack` with the `-o` flag to write it to a different output file. The recommended naming convention is `*.sourcemap.json` (e.g. `game.sourcemap.json`, `plugin.sourcemap.json`).
+- **Importing a full game**: use `azul build` with the `--destructive` flag to remove any orphaned Instances that were deleted in the source project.
