@@ -10,53 +10,40 @@ Azul has two configuration layers:
 
 ## CLI user config
 
-Use:
+To open your config in your default editor, run:
 
 ```bash
 azul config
 ```
 
-to open your config file in your default editor, or:
+To print the path to your config file, run:
 
 ```bash
 azul config --path
 ```
 
-to print its location.
-
-Common fields:
-
-| Field                        | Type      | Description                                                               |
-| ---------------------------- | --------- | ------------------------------------------------------------------------- |
-| **`daemonPath`**             | `string`  | Path to the Desktop Daemon executable.                                    |
-| **`port`**                   | `number`  | Port used for communication between the Desktop Daemon and Studio Plugin. |
-| **`syncDir`**                | `string`  | Directory where the DataModel will be mirrored.                           |
-| **`sourcemapPath`**          | `string`  | Path for the generated `sourcemap.json` file.                             |
-| **`scriptExtension`**        | `string`  | Script extension (`.luau` by default).                                    |
-| **`fileWatchDebounce`**      | `number`  | Delay used for local file watcher events.                                 |
-| **`deleteOrphansOnConnect`** | `boolean` | Delete unmapped files on full snapshot.                                   |
-| **`suffixModuleScripts`**    | `boolean` | Suffix ModuleScripts with `.module`.                                      |
-| **`checkForUpdates`**        | `boolean` | Whether to check for updates on the NPM registry.                         |
-| **`debugMode`**              | `boolean` | Enable verbose daemon logs.                                               |
+| Field                            | Type      | Description                                                               |
+| -------------------------------- | --------- | ------------------------------------------------------------------------- |
+| **`daemonPath`**                 | `string`  | Path to the Desktop Daemon executable.                                    |
+| **`port`**                       | `number`  | Port used for communication between the Desktop Daemon and Studio Plugin. |
+| **`syncDir`**                    | `string`  | Directory where the DataModel will be mirrored.                           |
+| **`sourcemapPath`**              | `string`  | Path for the generated `sourcemap.json` file.                             |
+| **`scriptExtension`**            | `string`  | Script extension (`.luau` by default).                                    |
+| **`fileWatchDebounce`**          | `number`  | Delay used for local file watcher events.                                 |
+| **`deleteOrphansOnConnect`**     | `boolean` | Delete unmapped files on full snapshot.                                   |
+| **`suffixModuleScripts`**        | `boolean` | Whether to suffix ModuleScripts with `.module` (e.g. `Foo.module.luau`).  |
+| **`checkForUpdates`**            | `boolean` | Whether to check for updates on the NPM registry.                         |
+| **`debugMode`**                  | `boolean` | Enable verbose daemon logs.                                               |
+| **`liveFsSync.enabled`**         | `boolean` | Replicate filesystem actions (create, delete) to Studio during live sync  |
+| **`liveFsSync.usePolling`**      | `boolean` | Use polling for file watching instead of native OS events.                |
+| **`liveFsSync.pollingInterval`** | `number`  | Polling interval in milliseconds.                                         |
 
 ## Plugin settings
 
 Plugin settings are edited in the plugin UI in Studio.
 
-### Global plugin settings
-
-- **Debug Mode**: Extra plugin-side logging.
-- **Silent Mode**: Reduces non-error plugin logs.
-
-### Global or project-scoped settings
-
-- **Scope**: Apply as global defaults or per-place settings.
-- **WebSocket URL**: Usually `ws://localhost:<port>` and should match daemon port.
-- **Service List** + **Service List Type**: Include/exclude root services.
-- **Excluded Parents**: Exclude paths (for example plugin-managed folders).
-
 ## Per-place daemon config (ServerStorage.Azul.Config)
 
-For team workflows, you can store daemon overrides and `pushMappings` inside the place.
+This file can be generated through the plugin UI by scrolling down, and clicking on "Open Place Configuration"
 
-See the dedicated [Per-place Daemon Config](/place-daemon-config/) for a full example.
+_See the dedicated [Per-place Daemon Config](/place-daemon-config/) page for more information on this feature._
