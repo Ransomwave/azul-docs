@@ -51,14 +51,9 @@ Azul determines script class from filename suffix:
 
 ## Script creation, deletion & renaming
 
-Azul treats **Studio as the exclusive source of truth for Instance creation, deletion, and renaming**.
+Creating, deleting, or renaming scripts in your local `syncDir` will automatically create, delete, rename or change the type of the corresponding Studio instance.
 
-Creating, deleting, or renaming instances in Studio will sync the changes to your local filesystem. However, doing the same with files in the local `syncDir` during an active session will not affect Studio.
-
-The recommended workflow is to manage your instance hierarchy in Studio, and edit script contents in your editor.
-
-<Aside type="tip">
-  If you need to import code from your local filesystem, use [`azul
-  build`](/commands/#azul-build) or [`azul push`](/commands/#azul-push) to sync
-  them to Studio.
+<Aside type="note">
+  If this behavior is not desired, it can be disabled through [`azul
+  config`](/commands/#azul-config) with the `liveFsSync.enabled` option.
 </Aside>
