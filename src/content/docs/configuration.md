@@ -24,7 +24,6 @@ azul config --path
 
 | Field                            | Type      | Description                                                               |
 | -------------------------------- | --------- | ------------------------------------------------------------------------- |
-| **`daemonPath`**                 | `string`  | Path to the Desktop Daemon executable.                                    |
 | **`port`**                       | `number`  | Port used for communication between the Desktop Daemon and Studio Plugin. |
 | **`syncDir`**                    | `string`  | Directory where the DataModel will be mirrored.                           |
 | **`sourcemapPath`**              | `string`  | Path for the generated `sourcemap.json` file.                             |
