@@ -45,4 +45,4 @@ Plugin settings are edited in the plugin UI in Studio.
 
 This file can be generated through the plugin UI by scrolling down, and clicking on "Open Place Configuration"
 
-_See the dedicated [Per-place Daemon Config](/place-daemon-config/) page for more information on this feature._
+_See the dedicated [Per-place Daemon Config](/advanced/place-daemon-config/) page for more information on this feature._
