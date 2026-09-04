@@ -41,18 +41,18 @@ azul --sync-dir ./sync --port 8080
 
 ## `azul build`
 
-One-time push from local filesystem into Studio.
+Mounts the entire local project into Studio.
 
 ```bash
 azul build [options]
 ```
 
-| Option                    | Description                                                                                       |
-| ------------------------- | ------------------------------------------------------------------------------------------------- |
-| `--from-sourcemap [file]` | Build from sourcemap data. If passed without file, uses `./sourcemap.json`                        |
-| `--rojo`                  | Enable Rojo-compatible parsing                                                                    |
-| `--rojo-project <file>`   | Override Rojo project path                                                                        |
-| `--destructive`           | Completely replace Studio state with your local project (all instances, scripts, and properties). |
+| Option                    | Description                                                                |
+| ------------------------- | -------------------------------------------------------------------------- |
+| `--from-sourcemap [file]` | Build from sourcemap data. If passed without file, uses `./sourcemap.json` |
+| `--rojo`                  | Enable Rojo-compatible parsing                                             |
+| `--rojo-project <file>`   | Override Rojo project path                                                 |
+| `--destructive`           | Wipe the entire Studio state before building.                              |
 
 Examples:
 
@@ -64,21 +64,21 @@ azul build --rojo --rojo-project default.project.json
 
 ## `azul push`
 
-Selective push from local files to a specific Studio destination.
+Mounts a local folder or file into Studio at a specific path.
 
 ```bash
 azul push [options]
 ```
 
-| Option                    | Short | Description                     |
-| ------------------------- | ----- | ------------------------------- |
-| `--source <dir>`          | `-s`  | Local source folder             |
-| `--destination <path>`    | `-d`  | Studio destination path         |
-| `--from-sourcemap [file]` |       | Push from sourcemap data        |
-| `--destructive`           |       | Wipe destination children first |
-| `--no-place-config`       |       | Ignore place config mappings    |
-| `--rojo`                  |       | Enable Rojo-compatible parsing  |
-| `--rojo-project <file>`   |       | Override Rojo project path      |
+| Option                    | Short | Description                              |
+| ------------------------- | ----- | ---------------------------------------- |
+| `--source <dir>`          | `-s`  | Local source folder                      |
+| `--destination <path>`    | `-d`  | Studio destination path                  |
+| `--from-sourcemap [file]` |       | Push from sourcemap data                 |
+| `--destructive`           |       | Wipe destination children before pushing |
+| `--no-place-config`       |       | Ignore place config mappings             |
+| `--rojo`                  |       | Enable Rojo-compatible parsing           |
+| `--rojo-project <file>`   |       | Override Rojo project path               |
 
 Example:
 
@@ -93,7 +93,7 @@ azul push -s Packages -d ReplicatedStorage.Packages --destructive --rojo
 
 ## `azul pack`
 
-Serialize Studio instance properties into sourcemap.json for hermetic builds.
+Serializes Studio instance properties into a sourcemap for hermetic builds.
 
 ```bash
 azul pack [options]
