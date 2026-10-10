@@ -22,20 +22,21 @@ To print the path to your config file, run:
 azul config --path
 ```
 
-| Field                            | Type      | Description                                                               |
-| -------------------------------- | --------- | ------------------------------------------------------------------------- |
-| **`port`**                       | `number`  | Port used for communication between the Desktop Daemon and Studio Plugin. |
-| **`syncDir`**                    | `string`  | Directory where the DataModel will be mirrored.                           |
-| **`sourcemapPath`**              | `string`  | Path for the generated `sourcemap.json` file.                             |
-| **`scriptExtension`**            | `string`  | Script extension (`.luau` by default).                                    |
-| **`fileWatchDebounce`**          | `number`  | Delay used for local file watcher events.                                 |
-| **`deleteOrphansOnConnect`**     | `boolean` | Delete unmapped files on full snapshot.                                   |
-| **`suffixModuleScripts`**        | `boolean` | Whether to suffix ModuleScripts with `.module` (e.g. `Foo.module.luau`).  |
-| **`checkForUpdates`**            | `boolean` | Whether to check for updates on the NPM registry.                         |
-| **`debugMode`**                  | `boolean` | Enable verbose daemon logs.                                               |
-| **`liveFsSync.enabled`**         | `boolean` | Replicate filesystem actions (create, delete) to Studio during live sync  |
-| **`liveFsSync.usePolling`**      | `boolean` | Use polling for file watching instead of native OS events.                |
-| **`liveFsSync.pollingInterval`** | `number`  | Polling interval in milliseconds.                                         |
+| Field                            | Type      | Description                                                                                                                                          |
+| -------------------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`port`**                       | `number`  | Port used for communication between the Desktop Daemon and Studio Plugin.                                                                            |
+| **`syncDir`**                    | `string`  | Directory where the DataModel will be mirrored.                                                                                                      |
+| **`sourcemapPath`**              | `string`  | Path for the generated `sourcemap.json` file.                                                                                                        |
+| **`scriptExtension`**            | `string`  | Script extension (`.luau` by default).                                                                                                               |
+| **`fileWatchDebounce`**          | `number`  | Delay used for local file watcher events.                                                                                                            |
+| **`deleteOrphansOnConnect`**     | `boolean` | Delete unmapped files on full snapshot.                                                                                                              |
+| **`suffixModuleScripts`**        | `boolean` | Whether to suffix ModuleScripts with `.module` (e.g. `Foo.module.luau`).                                                                             |
+| **`rewriteSelfRequires`**        | `boolean` | Whether to rewrite `require("@self/Bar")` calls to `require("./Foo/Bar")` when Pushing or Building. Useful if you are using an old Luau LSP version. |
+| **`checkForUpdates`**            | `boolean` | Whether to check for updates on the NPM registry.                                                                                                    |
+| **`debugMode`**                  | `boolean` | Enable verbose daemon logs.                                                                                                                          |
+| **`liveFsSync.enabled`**         | `boolean` | Replicate filesystem actions (create, delete) to Studio during live sync                                                                             |
+| **`liveFsSync.usePolling`**      | `boolean` | Use polling for file watching instead of native OS events.                                                                                           |
+| **`liveFsSync.pollingInterval`** | `number`  | Polling interval in milliseconds.                                                                                                                    |
 
 ## Plugin settings
 
