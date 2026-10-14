@@ -4,7 +4,7 @@ import starlight from "@astrojs/starlight";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://azul-docs.vercel.app",
+  site: "https://azul.ransomwave.games",
   integrations: [
     starlight({
       title: "Azul",
@@ -28,6 +28,16 @@ export default defineConfig({
             property: "og:site_name",
             content: "Azul",
           },
+        },
+        {
+          tag: "script",
+          attrs: { type: "application/ld+json" },
+          content: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "Azul",
+            url: "https://azul.ransomwave.games/",
+          }),
         },
       ],
       social: [
