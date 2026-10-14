@@ -40,14 +40,14 @@ This is a comprehensive list of Rojo features supported in the Rojo Compatibilit
 - 🔜 - The feature is not available but it'd be nice to include it at some point
 - 🤷‍♀️ - The feature is not available yet; open to discussion about implementing this
 
-| Feature                                                               | Status | Notes                                                                                         |
-| --------------------------------------------------------------------- | ------ | --------------------------------------------------------------------------------------------- |
-| Scripts & folders (`*.server.luau`, `*.client.luau`, `*.module.luau`) | ✅     |                                                                                               |
-| Rojo Project Files                                                    | ✅     | [Nested project files](https://rojo.space/docs/v7/sync-details/#projects) are also supported. |
-| JSON Models (`*.model.json`)                                          | ✅     |                                                                                               |
-| XML or binary Models (`*.rbxm`, `*.rbxmx`)                            | ❌     | For advanced use-cases, directly build your project using `rojo build`.                       |
-| [Meta Files](https://rojo.space/docs/v7/sync-details/#meta-files)     | ❌     | For advanced use-cases, directly build your project using `rojo build`.                       |
-| JSON Modules (`*.json`)                                               | ✅     |                                                                                               |
-| Plain text files (`*.txt`)                                            | 🤷‍♀️     |                                                                                               |
-| Localization Tables (`*.csv`)                                         | 🤷‍♀️     |                                                                                               |
-| TOML Modules                                                          | 🤷‍♀️     |                                                                                               |
+| Feature                                                                           | Status | Notes                                                                                                                                                           |
+| --------------------------------------------------------------------------------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Scripts & folders (`init.luau`, `*.luau`, `*.server.luau`, `*.client.luau`)       | ✅     |                                                                                                                                                                 |
+| Rojo Project Files                                                                | ✅     | [Nested project files](https://rojo.space/docs/v7/sync-details/#projects) are also supported.                                                                   |
+| JSON Models (`*.model.json`)                                                      | ✅     |                                                                                                                                                                 |
+| XML or binary Models (`*.rbxm`, `*.rbxmx`)                                        | ❌     | Azul does not yet support reading or writing `rbxm`/`rbxmx` files. When (or if) this is implemented for mainline Azul, this feature will be heavily considered. |
+| [Meta Files](https://rojo.space/docs/v7/sync-details/#meta-files) (`*.meta.json`) | 🤷‍♀️     | While supporting meta files is possible, I have not seen them used very often. A solid, real-world use case would be needed for it to be considered.            |
+| JSON Modules (`*.json`)                                                           | ✅     |                                                                                                                                                                 |
+| Plain text files (`*.txt`)                                                        | 🤷‍♀️     | I have seen very few projects make use of the `*.txt`, `*.csv` or `*.toml` files.                                                                               |
+| Localization Tables (`*.csv`)                                                     | 🤷‍♀️     |                                                                                                                                                                 |
+| TOML Modules (`*.toml`)                                                           | 🤷‍♀️     |                                                                                                                                                                 |
